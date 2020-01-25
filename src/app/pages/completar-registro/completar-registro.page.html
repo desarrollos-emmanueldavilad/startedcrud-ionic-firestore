@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>completar-registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <ion-row no-padding class="animated fadeIn fast">
+            <ion-col size="6" offset="3">
+                <img class="circular" [src]="image" *ngIf="image" />
+            </ion-col>
+        </ion-row>
+        <ion-row no-padding class="animated fadeIn fast">
+            <ion-col size="6" offset="3">
+                <ion-button fill="outline" expand="block" size="small" (click)="getPicture()">Agrega tu Foto</ion-button>
+            </ion-col>
+        </ion-row>
+    </div>
+    <form  style="font-family: Comfortaa" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+  
+        <ion-item>
+            <ion-label position="floating" color="ion-color-dark">Nombre</ion-label>
+            <ion-input placeholder="Nombre" type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="ion-color-dark">Apellido</ion-label>
+            <ion-input placeholder="Apellido" type="text" formControlName="apellido"></ion-input>
+        </ion-item>
+        <ion-item>
+                <ion-label position="floating" color="ion-color-dark">Correo Electronico</ion-label>
+                <ion-input placeholder="Correo Electronico" type="text" formControlName="email"></ion-input>
+            </ion-item>
+        <ion-item>
+                <div>
+                    <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" padding placeholder="Fecha de Nacimiento" type="date" formControlName="fechaNacimiento"  done-text="Aceptar" cancel-text="Cancelar"></ion-datetime>
+                </div>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="ion-color-dark">Edad</ion-label>
+            <ion-input placeholder="Edad" type="number" formControlName="edad"></ion-input>
+        </ion-item>
+   
+        <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid" class="boton-crear">Terminar Registro</ion-button>
+    </form>
+
+</ion-content>

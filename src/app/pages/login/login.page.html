@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio de Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div  text-center>
+        <h4 text-center>Iniciar Sección</h4>
+      </div>
+    
+      <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+        <ion-item>
+          <ion-label position="floating" color="ion-color-dark">Correo Electronico</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.email">
+            <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating" color="ion-color-dark">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.password">
+            <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid" color="primary">Entrar</ion-button>
+        <label class="error-message">{{errorMessage}}</label>
+
+        <ion-item text-center>
+            <ion-button expand="block" *ngIf="!passReset && validations_form.controls.email.valid" (click)="resetPassword()">Olvidate tu contraseña <br> {{validations_form.value.email}}</ion-button>
+            <p *ngIf="passReset" >Reset enviado. Revisa tu email y sigue las instruciones.</p>    
+        </ion-item>
+      </form>
+      
+      <p class="go-to-register">
+      No tienes una Cuenta? <ion-button size="small" (click)="goRegisterPage()">Regístrate.</ion-button>
+    </p>
+
+</ion-content>

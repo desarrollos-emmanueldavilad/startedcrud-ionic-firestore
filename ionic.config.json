@@ -1,0 +1,8 @@
+{
+  "name": "rentech-inquilino",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "2acf249d"
+}

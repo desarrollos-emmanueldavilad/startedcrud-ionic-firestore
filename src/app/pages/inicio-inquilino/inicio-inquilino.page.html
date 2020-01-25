@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>inicio-inquilino</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-content *ngIf="items" class="list-mini-content" padding>
+      <hr>
+      <div class="animated fadeIn fast " text-center *ngFor="let item of items ">
+          <img src="{{item.payload.doc.data().image}} " alt="Avatar " style=" border-radius: 50%; ">
+      </div>
+      <hr>
+      <div class="card bg-light mb-3 " style="max-width: 18rem; font-family: Comfortaa ">
+          <div *ngIf="items.length> 0" class="list-mini">
+
+
+
+
+              <ion-list>
+                  <ul style="list-style: none;" *ngFor="let item of items">
+                      <ion-grid>
+                          <div text-center>
+                              <h3><i>{{item.payload.doc.data().nombre}}</i></h3>
+                          </div>
+                          <li>
+                              <ion-label color="ion-color-dark">
+                                  <h5><i>Correo Electronico</i></h5>
+                              </ion-label>
+                              <ion-input type="text" [readonly]="true">
+                                  <p><i>{{item.payload.doc.data().email}}</i></p>
+                              </ion-input>
+                          </li>
+                      </ion-grid>
+                  </ul>
+              </ion-list>
+          </div>
+      </div>
+      <div *ngIf="items.length == 0" class="empty-list">
+          <ion-button type="button" expand="block" (click)="goCrearPerfil()">Completar registro</ion-button>
+      </div>
+  </ion-content>
+
